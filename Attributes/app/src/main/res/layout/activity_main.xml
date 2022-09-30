@@ -7,59 +7,71 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/myEditText"
         android:layout_width="412dp"
         android:layout_height="38dp"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="109dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_black"
         android:layout_width="171dp"
         android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="201dp"
         android:text="Черный текст"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="163dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_red"
         android:layout_width="171dp"
         android:layout_height="45dp"
+        android:layout_marginTop="201dp"
+        android:layout_marginEnd="26dp"
         android:text="Красный текст"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="163dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_8sp"
         android:layout_width="171dp"
         android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="264dp"
         android:text="Размер - 8SP"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="208dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button24sp"
         android:layout_width="171dp"
         android:layout_height="45dp"
+        android:layout_marginTop="264dp"
+        android:layout_marginEnd="26dp"
         android:text="Размер - 24SP"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="208dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_whiteBack"
         android:layout_width="171dp"
         android:layout_height="45dp"
+        android:layout_marginTop="331dp"
+        android:layout_marginEnd="26dp"
         android:text="Белый фон"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="253dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_yellowBack"
         android:layout_width="171dp"
         android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="331dp"
         android:text="Желтый фон"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="253dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
