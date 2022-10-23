@@ -20,17 +20,18 @@ class MainActivity : AppCompatActivity() {
         arrayText.add(findViewById(R.id.textView8))
         arrayText.add(findViewById(R.id.textView9))
         var count = 0
+        var a = count+2
         button_plus.setOnClickListener {
             if(count == 2){
                 arrayText[count].setText("")
                 arrayText[count+3].setText("")
                 arrayText[count+6].setText("")
                 count = 0
-                arrayText[count].setText("1")
-                arrayText[count+3].setText("1")
-                arrayText[count+6].setText("1")
+                arrayText[count].setText(a.toString())
+                arrayText[count+3].setText(a.toString())
+                arrayText[count+6].setText(a.toString())
+                a += 1
             } else{
-                val a = count+2
                 arrayText[count].setText("")
                 arrayText[count+3].setText("")
                 arrayText[count+6].setText("")
@@ -38,6 +39,8 @@ class MainActivity : AppCompatActivity() {
                 arrayText[count+1].setText(a.toString())
                 arrayText[count+4].setText(a.toString())
                 arrayText[count+7].setText(a.toString())
+
+                a += 1
                 count++
             }
         }

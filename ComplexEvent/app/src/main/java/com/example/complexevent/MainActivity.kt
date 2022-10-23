@@ -19,7 +19,11 @@ class MainActivity : AppCompatActivity() {
         val textNeedtoSave:EditText = findViewById(R.id.editText)
         button.setOnClickListener {
             if(check.isChecked){
-                progressBar.progress = progressBar.progress + 10
+                if(progressBar.progress == 100){
+                    progressBar.progress = 0
+                }else{
+                    progressBar.progress = progressBar.progress + 10
+                }
                 savedText.setText(textNeedtoSave.text)
             }
         }

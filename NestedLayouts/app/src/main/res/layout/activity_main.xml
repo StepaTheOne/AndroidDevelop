@@ -72,34 +72,36 @@
             android:id="@+id/textView8"
             android:layout_width="110dp"
             android:layout_height="20dp"
-            android:layout_marginStart="103dp"
-            android:layout_marginBottom="540dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="31dp"
             android:gravity="center"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="110dp"
             android:layout_height="20dp"
-            android:layout_marginStart="164dp"
-            android:layout_marginBottom="497dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="150dp"
             android:gravity="center"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="110dp"
             android:layout_height="20dp"
-            android:layout_marginStart="226dp"
-            android:layout_marginBottom="540dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="88dp"
             android:gravity="center"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

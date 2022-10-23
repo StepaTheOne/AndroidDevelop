@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/myEditText"
-        android:layout_width="412dp"
-        android:layout_height="38dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
