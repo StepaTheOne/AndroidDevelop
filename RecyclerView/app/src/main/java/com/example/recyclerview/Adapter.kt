@@ -1,10 +1,14 @@
 package com.example.recyclerview
 
 import android.content.Context
+import android.content.res.Resources
+import android.graphics.Color
+import android.graphics.ColorSpace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.graphics.toColor
 import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
 
@@ -28,4 +32,5 @@ class Adapter(private val context: Context,
     override fun getItemCount(): Int {
         return list.size
     }
+
 }

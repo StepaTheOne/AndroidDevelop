@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Recycler View</string>
+    <string-array name="colors_name">
+        <item>BLACK</item>
+        <item>RED</item>
+        <item>YELLOW</item>
+        <item>MAGENTA</item>
+        <item>CYAN</item>
+    </string-array>
+    <integer-array name="Color_HEX">
+        <item>-16777216</item>
+        <item>-65536</item>
+        <item>-256</item>
+        <item>-65281</item>
+        <item>-16711681</item>
+    </integer-array>
 </resources>
