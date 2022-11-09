@@ -9,11 +9,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.graphics.toColor
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Adapter.CellClickListener {
 
     private fun fillList():ArrayList<ColorData>{
         val data = this.resources.getStringArray(R.array.colors_name).toList()
@@ -33,8 +34,11 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView: RecyclerView = findViewById(R.id.rView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = Adapter(this,fillList())
+        recyclerView.adapter = Adapter(this,fillList(), this)
+    }
 
+    override fun onCellClickListener(data: String) {
+        Toast.makeText(applicationContext,"This is $data",Toast.LENGTH_SHORT).show()
     }
 
 }
