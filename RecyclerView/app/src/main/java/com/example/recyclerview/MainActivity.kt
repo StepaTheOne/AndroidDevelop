@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.graphics.toColor
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,7 +39,8 @@ class MainActivity : AppCompatActivity(), Adapter.CellClickListener {
     }
 
     override fun onCellClickListener(data: String) {
-        Toast.makeText(applicationContext,"This is $data",Toast.LENGTH_SHORT).show()
+        Toast.makeText(baseContext,"This is $data",Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this,"AAA",Toast.LENGTH_LONG).show()
     }
 
 }
