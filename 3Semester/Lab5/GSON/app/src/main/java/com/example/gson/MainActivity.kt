@@ -2,17 +2,21 @@ package com.example.gson
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.*
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okio.IOException
 import timber.log.Timber
 import java.net.URL
+import java.security.cert.X509Certificate
+import javax.net.ssl.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,31 +27,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if(BuildConfig.DEBUG){
-            Timber.plant(Timber.DebugTree())
-        }
+        Timber.plant(Timber.DebugTree())
 
-        val photoType = object: TypeToken<Photo>() {}.type
-        val photoPageType = object: TypeToken<PhotoPage>(){}.type
+
         val photosType = object : TypeToken<Wrapper>() {}.type
 
         val photoUrls:MutableList<String> = mutableListOf()
-        val photoImg:MutableList<Bitmap> = mutableListOf()
 
         val res = GlobalScope.async {
-            loadPhotos()
+            loadTextPhotos()
         }
 
 
         runBlocking {
             val photos = Gson().fromJson<Wrapper>(res.await(), photosType)
-            var count = 0
-            for(i in photos.photoPage.photo){
+            for((count, i) in photos.photoPage.photo.withIndex()){
                 photoUrls.add("https://farm${i.farm}.staticflickr.com/${i.server}/${i.id}_${i.secret}_z.jpg")
                 if(count%5 == 0){
                     Timber.tag("Every 5").d(i.toString())
                 }
-                count++
             }
 
             val photoImg = GlobalScope.async {
@@ -80,23 +78,55 @@ class MainActivity : AppCompatActivity() {
             }
         }*/
 
+
     }
-    private fun loadPhotos():String {
-        val basedUrl1 = URL(urlString)
-        return basedUrl1.readText()
+    private fun loadTextPhotos():String {
+        //val basedUrl1 = URL(urlString)
+        //return basedUrl1.readText()
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url(urlString)
+            .build()
+
+        client.newCall(request).execute().use { response ->
+            if (!response.isSuccessful) throw IOException("Unexpected code $response")
+
+            return response.body!!.string()
+        }
+
     }
 
     private fun GetPhotosImg(photoUrls:List<String>):MutableList<Bitmap> {
         val photosImg:MutableList<Bitmap> = mutableListOf()
+        val client = OkHttpClient()
+
+        for(i in photoUrls){
+            try{
+                val request = Request.Builder().url(i)
+                    .build()
+                client.newCall(request).execute().use { response ->
+                    if (!response.isSuccessful) throw IOException("Unexpected code $response")
+                    val imageTemp = response.body?.byteStream()
+                    photosImg.add(BitmapFactory.decodeStream(imageTemp))
+
+                }
+            }
+            catch(e:IOException){
+
+            }
+        }
+        return photosImg
+/*
         for(i in photoUrls){
             val basedUrl1 = URL(i).openStream()
             photosImg.add(BitmapFactory.decodeStream(basedUrl1))
         }
-        return photosImg
+        return photosImg*/
     }
 
     private fun loadRandomFactt() {
         val basedUrl1 = URL(urlString)
         Timber.tag("AAAAAAAAAAAAA").d(basedUrl1.readText())
     }
+
 }
